@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import App from './App';
- 
-const title = 'React test';
+require('./mystyles.scss');
+
+const title = 'Aaron\'s Blog';
  
 ReactDOM.render(
   <App title={title} />,

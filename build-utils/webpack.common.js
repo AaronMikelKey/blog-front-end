@@ -1,6 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  
 module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.js'),
@@ -10,6 +12,22 @@ module.exports = {
         test: /\.(js)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.scss$/,
+        use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+                // options...
+              }
+            }
+          ]
       }
     ]
   },
@@ -17,9 +35,13 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/mystyles.css'
+    }),
+    new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Hello Webpack bundled JavaScript Project',
+      title: 'Aaron Key\'s Blog',
       template: path.resolve(__dirname, '..', './src/index.html'),
     })
   ],
@@ -29,5 +51,6 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, '..', './dist'),
+    hot: true,
   },
 };
