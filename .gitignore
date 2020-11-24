@@ -5,6 +5,8 @@ jspm_packages/
 # dotenv environment variables file
 .env
 .env.test
+.env.development
+.env.production
 
 #DS Store
 .DS_Store
