@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './components/navbar';
-import BlogPost from './components/blogpost';
+import HomeBlogPosts from './components/HOMEblogposts';
 
 
 class Home extends React.Component {
@@ -47,7 +47,7 @@ class Home extends React.Component {
           <Navbar />
           <ul>
             {items.map(item => (
-              <BlogPost key={item._id} {...item} />
+              <HomeBlogPosts key={item._id} {...item} />
             ))}
           </ul>
         </div>
