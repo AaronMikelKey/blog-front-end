@@ -1,2 +1,14 @@
 @charset "utf-8";
 @import "../node_modules/bulma";
+
+.commentBox {
+  border: 2px solid hsl(171, 100%, 41%)
+}
+
+.commentTitle {
+  border-bottom: 2px solid hsl(172, 100%, 41%)
+}
+
+hr {
+  margin: 1.5rem 0 0 0
+}
