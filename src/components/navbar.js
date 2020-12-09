@@ -11,9 +11,9 @@ const LoggedIn = (props) => {
         <a className="button is-primary">
           <strong>Sign up</strong>
         </a>
-        <a className="button is-light">
+        <Link className="button is-light" to='/login'>
           Log in
-        </a>
+        </Link>
       </div>
       )
   }

@@ -11,6 +11,7 @@ import {
   useParams
 } from "react-router-dom"
 import Navbar from './components/navbar'
+import LoginForm from './components/loginForm'
 
 
 const SingleBlogPost = () => {
@@ -34,6 +35,10 @@ const App = () => {
 
         <Route path='/blog/:blogId'>
           <SingleBlogPost />
+        </Route>
+
+        <Route path='/login'>
+          <LoginForm />
         </Route>
 
         <Route path="/">
