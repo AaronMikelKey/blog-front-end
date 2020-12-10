@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './navbar'
 import 'regenerator-runtime/runtime'
+import { Link } from 'react-router-dom'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class LoginForm extends React.Component {
     this.state = {username: '', password: ''}
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFacebookLogin = this.handleFacebookLogin.bind(this)
   }
 
   handleChange(event) {
@@ -19,10 +21,9 @@ class LoginForm extends React.Component {
     console.log('State: ' + JSON.stringify(this.state))
     const res = await fetch('https://aaron-key-blog-api.herokuapp.com/auth/login', {
       method: 'POST',
-      credentials: "same-origin",
+      credentials: "include",
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:8080/login'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state)
     })
@@ -33,6 +34,23 @@ class LoginForm extends React.Component {
       return Promise.resolve(response)
     } else {
       return Promise.reject('Error in promise')
+    }
+  }
+
+  async handleFacebookLogin(e) {
+    e.preventDefault()
+    console.log('facebook login')
+    const res = await fetch('https://aaron-key-blog-api.herokuapp.com/auth/facebook', {
+      
+    })
+    if (res.ok) {
+      const response = await res.json();
+      console.log(res)
+      console.log(response)
+      return Promise.resolve(response)
+    } else {
+      console.log(res)
+      return Promise.reject('failed')
     }
   }
 
@@ -60,6 +78,11 @@ class LoginForm extends React.Component {
                 <button className="button is-link" value='Submit' onClick={this.handleSubmit}>Submit</button>
               </div>
             </form>
+            <div>
+              <a href='https://aaron-key-blog-api.herokuapp.com/auth/facebook'> Facebook login
+              </a>
+                <button className='button is-link' onClick={this.handleFacebookLogin}>Login with Facebook</button>
+            </div>
           </div>
           <div className='column is-2'></div>
         </div>

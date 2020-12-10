@@ -41,6 +41,10 @@ const App = () => {
           <LoginForm />
         </Route>
 
+        <Route path='/login/facebook'>
+          
+        </Route>
+
         <Route path="/">
           <Home />
         </Route>
