@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import './hooks/facebookScripts'
+require('./hooks/facebookScripts')
 require('./mystyles.scss')
 
 
