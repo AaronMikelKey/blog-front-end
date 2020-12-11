@@ -13,6 +13,7 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+      {node:'empty'},
       {
         test: /\.scss$/,
         use: [
