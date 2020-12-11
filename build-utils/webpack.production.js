@@ -4,9 +4,6 @@ const { DefinePlugin } = require('webpack')
 
 module.exports = {
   mode: 'production',
-  node: {
-    fs: "empty"
-  },
   plugins: [
     new DefinePlugin({
       'process.env': {
