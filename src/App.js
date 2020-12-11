@@ -3,6 +3,7 @@ import Home from './Home'
 import About from './About'
 import Contact from './Contact'
 import BlogPost from './components/blogPost'
+import facebookScripts from './hooks/facebookScripts'
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,6 +25,7 @@ const SingleBlogPost = () => {
 const App = () => {
   return (
     <Router>
+      <facebookScripts />
       <Switch>
         <Route path="/about">
           <About />
