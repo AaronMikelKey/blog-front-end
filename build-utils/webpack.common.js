@@ -5,9 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  
 module.exports = {
-  node: {
-    fs: "empty"
-  },
   entry: path.resolve(__dirname, '..', './src/index.js'),
   module: {
     rules: [
