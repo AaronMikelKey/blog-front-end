@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const LoggedIn = (props) => {
   if (props.user) {
@@ -31,9 +31,9 @@ const Navbar = (props) =>
     </div>
     <div className='navbar-menu'>
       <div className='navbar-start'>
-        <Link className='navbar-item' to='/'>Home</Link>
-        <Link className='navbar-item' to='/about'>About</Link>
-        <Link className='navbar-item' to='/contact'>Contact</Link>
+        <NavLink className='navbar-item' to='/'>Home</NavLink>
+        <NavLink className='navbar-item' to='/about'>About</NavLink>
+        <NavLink className='navbar-item' to='/contact'>Contact</NavLink>
       </div>
       <div className="navbar-end">
         <div className="navbar-item">

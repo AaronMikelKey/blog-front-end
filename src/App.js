@@ -7,11 +7,10 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useHistory,
   useParams
 } from "react-router-dom"
-import Navbar from './components/navbar'
 import LoginForm from './components/loginForm'
+import history from './hooks/history'
 
 
 const SingleBlogPost = () => {
@@ -23,7 +22,7 @@ const SingleBlogPost = () => {
 
 const App = () => {
   return (
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route path="/about">
           <About />
