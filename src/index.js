@@ -1,6 +1,6 @@
 import React from 'react'
 import App from './App'
-import { initFacebookSdk } from './hooks'
+import { initFacebookSdk } from './hooks/init-fb-sdk'
 require('./mystyles.scss')
 
 

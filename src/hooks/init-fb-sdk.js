@@ -2,7 +2,7 @@ import { accountService } from './accountService'
 
 const FB_APP_ID = process.env.FB_APP_ID
 
-export default initFacebookSdk = () => {
+const initFacebookSdk = () => {
   return new Promise(resolve => {
     //initialize FB SDK before starting app
     window.fbAsyncInit = function () {
@@ -35,3 +35,5 @@ export default initFacebookSdk = () => {
     }(document, 'script', 'facebook-jssdk'));
   })
 }
+
+export default initFacebookSdk
