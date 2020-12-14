@@ -10,7 +10,6 @@ import {
   useParams
 } from "react-router-dom"
 import LoginForm from './components/loginForm'
-import history from './hooks/history'
 
 
 const SingleBlogPost = () => {
@@ -22,7 +21,7 @@ const SingleBlogPost = () => {
 
 const App = () => {
   return (
-    <Router history={history}>
+    <Router>
       <Switch>
         <Route path="/about">
           <About />
