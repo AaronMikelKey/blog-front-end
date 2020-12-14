@@ -1,8 +1,6 @@
-import { accountService } from './accountService'
-
 const FB_APP_ID = process.env.FB_APP_ID
 
-const initFacebookSdk = () => {
+const InitFacebookSdk = () => {
   return new Promise(resolve => {
     //initialize FB SDK before starting app
     window.fbAsyncInit = function () {
@@ -18,9 +16,9 @@ const initFacebookSdk = () => {
       //auto login if logged into FB already
       window.FB.getLoginStatus(({ authResponse }) => {
         if (authResponse) {
-            accountService.apiAuthenticate(authResponse.accessToken).then(resolve)
+            console.log(authResponse)
         } else {
-            resolve()
+            console.log('error not logged in')
         }
     })
   
@@ -36,4 +34,4 @@ const initFacebookSdk = () => {
   })
 }
 
-export default initFacebookSdk
+export default InitFacebookSdk
