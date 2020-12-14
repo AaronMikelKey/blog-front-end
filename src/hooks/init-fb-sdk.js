@@ -1,6 +1,6 @@
 const FB_APP_ID = process.env.FB_APP_ID
 
-const InitFacebookSdk = () => {
+function InitFacebookSdk() {
   return new Promise(resolve => {
     //initialize FB SDK before starting app
     window.fbAsyncInit = function () {
@@ -17,8 +17,10 @@ const InitFacebookSdk = () => {
       window.FB.getLoginStatus(({ authResponse }) => {
         if (authResponse) {
             console.log(authResponse)
+            resolve()
         } else {
             console.log('error not logged in')
+            resolve()
         }
     })
   
