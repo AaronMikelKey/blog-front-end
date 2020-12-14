@@ -1,6 +1,6 @@
 const FB_APP_ID = process.env.FB_APP_ID
 
-function InitFacebookSdk() {
+export const InitFacebookSdk = () => {
   return new Promise(resolve => {
     //initialize FB SDK before starting app
     window.fbAsyncInit = function () {
@@ -35,5 +35,3 @@ function InitFacebookSdk() {
     }(document, 'script', 'facebook-jssdk'));
   })
 }
-
-export default InitFacebookSdk
