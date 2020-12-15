@@ -12,7 +12,7 @@ export const InitFacebookSdk = () => {
       })
 
       //auto login if logged into FB already
-      window.FB.getLoginStatus(({ authResponse }) => {
+      window.FB.getLoginStatus((authResponse) => {
         if (authResponse) {
             console.log(authResponse)
             resolve()
