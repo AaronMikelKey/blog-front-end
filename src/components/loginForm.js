@@ -1,34 +1,16 @@
 import React from 'react'
 import Navbar from './navbar'
 import 'regenerator-runtime/runtime'
-import { Link } from 'react-router-dom'
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props)
-    this.handleFacebookLogin = this.handleFacebookLogin.bind(this)
-  }
-
-
-  async handleFacebookLogin(e) {
-    e.preventDefault()
-    console.log('facebook login')
-    const res = await fetch('https://aaron-key-blog-api.herokuapp.com/auth/facebook', {
-      
-    })
-    if (res.ok) {
-      const response = await res.json();
-      console.log(res)
-      console.log(response)
-      return Promise.resolve(response)
-    } else {
-      console.log(res)
-      return Promise.reject('failed')
-    }
+    
   }
 
 
   render() {
+    const title = 'Aaron\'s Blog Login'
     return (
       <div>
         <Navbar />
