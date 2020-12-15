@@ -4,7 +4,7 @@ export const InitFacebookSdk = () => {
   return new Promise(resolve => {
     //initialize FB SDK before starting app
     window.fbAsyncInit = function () {
-      window.FB.init({
+      FB.init({
         appId: FB_APP_ID,
         cookie: true,
         xfbml: true,
@@ -14,7 +14,7 @@ export const InitFacebookSdk = () => {
       FB.AppEvents.logPageView()
 
       //auto login if logged into FB already
-      window.FB.getLoginStatus(({ authResponse }) => {
+      FB.getLoginStatus(({ authResponse }) => {
         if (authResponse) {
             console.log(authResponse)
             resolve()
