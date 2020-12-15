@@ -1,9 +1,8 @@
+import { apiAccount } from './apiAccount'
+
 const FB_APP_ID = process.env.FB_APP_ID
 
 export const InitFacebookSdk = () => {
-  const apiResponse = (token) => {
-    console.log('api response: ' + token.status)
-  }
   return new Promise(resolve => {
     //initialize FB SDK before starting app
     window.fbAsyncInit = () => {
@@ -18,7 +17,7 @@ export const InitFacebookSdk = () => {
       window.FB.getLoginStatus((authResponse) => {
         if (authResponse) {
             console.log(authResponse)
-            apiResponse(authResponse).then(resolve)
+            apiAccount.apiResponse(authResponse).then(resolve)
         } else {
             console.log('error not logged in')
             resolve()
