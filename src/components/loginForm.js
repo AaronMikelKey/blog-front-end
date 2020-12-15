@@ -39,9 +39,14 @@ class LoginForm extends React.Component {
               Log In <br /> Not a member yet? <a href=''>Sign up!</a>
             </div>
             <div>
-              <a href='https://aaron-key-blog-api.herokuapp.com/auth/facebook'> Facebook login
-              </a>
-                <button className='button is-link' onClick={this.handleFacebookLogin}>Login with Facebook</button>
+                <div 
+                  data-size="large" 
+                  data-button-type="continue_with" 
+                  data-layout="default" 
+                  data-auto-logout-link="false" 
+                  data-use-continue-as="false" 
+                  data-width=""
+                />
             </div>
           </div>
           <div className='column is-2'></div>
