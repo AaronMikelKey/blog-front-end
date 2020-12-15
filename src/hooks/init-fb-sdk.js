@@ -3,7 +3,7 @@ const FB_APP_ID = process.env.FB_APP_ID
 export const InitFacebookSdk = () => {
   return new Promise(resolve => {
     //initialize FB SDK before starting app
-    window.fbAsyncInit = function () {
+    window.fbAsyncInit = () => {
       window.FB.init({
         appId: FB_APP_ID,
         cookie: true,
