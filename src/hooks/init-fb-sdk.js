@@ -14,7 +14,7 @@ export const InitFacebookSdk = () => {
       })
 
       //auto login if logged into FB already, same as GET /auth/facebook on server
-      window.FB.getLoginStatus((response) => {
+      await window.FB.getLoginStatus((response) => {
 
         /*  response = 
             {status: ['connected', 'not_authorized', 'unknown'],
