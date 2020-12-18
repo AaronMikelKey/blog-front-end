@@ -11,6 +11,7 @@ class LoginForm extends React.Component {
 
   render() {
     const title = 'Aaron\'s Blog Login'
+    window.FB.XFBML.parse()
     return (
       <div>
         <Navbar />
