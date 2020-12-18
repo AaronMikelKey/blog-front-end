@@ -6,12 +6,12 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props)
     
+    window.FB.XFBML.parse()
   }
 
-
+  
   render() {
     const title = 'Aaron\'s Blog Login'
-    window.FB.XFBML.parse()
     return (
       <div>
         <Navbar />
