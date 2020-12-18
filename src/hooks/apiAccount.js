@@ -13,7 +13,7 @@ const FbApiAuth = async (userID, token) => {
     token: token,
     userID: userID
   }
-  const response = await fetch(baseUrl + '/fb-login', {
+  const response = await fetch(baseUrl + '/auth/facebook', {
     method: 'POST',
     credentials: 'include',
     header: {

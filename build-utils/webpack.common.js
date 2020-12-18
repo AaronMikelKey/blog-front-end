@@ -42,6 +42,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Aaron Key\'s Blog',
+      favicon: './src/images/favicon.ico',
       template: path.resolve(__dirname, '..', './src/index.html'),
     })
   ],
