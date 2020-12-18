@@ -13,11 +13,21 @@ export const InitFacebookSdk = () => {
         version: 'v9.0'
       })
 
-      //auto login if logged into FB already
-      window.FB.getLoginStatus((authResponse) => {
-        if (authResponse) {
-            console.log(authResponse)
-            apiAccount.apiResponse(authResponse).then(resolve)
+      //auto login if logged into FB already, same as GET /auth/facebook on server
+      window.FB.getLoginStatus((response) => {
+
+        /*  response = 
+            {status: ['connected', 'not_authorized', 'unknown'],
+              authResponse : {
+                accessToken: '...',
+                expiresIn: '...',
+                signedRequest: '...',
+                userID: '...'          } }   */
+
+        if (response.status === 'connected') {
+            console.log(response)
+            //if user is logged into FB, and authorized locally
+            apiAccount.FbApiAuth(authResponse.userID, authResponse.accessToken).then(resolve)
         } else {
             console.log('error not logged in')
             resolve()
