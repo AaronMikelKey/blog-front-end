@@ -16,7 +16,7 @@ class Deferred {
 export const fbLoaded = (new Deferred());
 /* 
     Use like this:
-    
+
     fbLoaded.promise.then( functionToRunAfterSDKLoads() )
 */
 
@@ -47,7 +47,7 @@ export const InitFacebookSdk = () => {
 
 //Checks login state of user.  If logged in, authorizes them with local auth
 export const findIfLoggedIn = () => {
-  fbLoaded.promise.then(window.FB.getLoginStatus((response) => {
+  fbLoaded.promise.then(FB.getLoginStatus((response) => {
 
     /*  response = 
         {status: ['connected', 'not_authorized', 'unknown'],
