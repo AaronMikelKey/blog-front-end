@@ -1,15 +1,16 @@
 import React from 'react'
 import Navbar from './navbar'
+import { findIfLoggedIn } from '../hooks/init-fb-sdk'
 import 'regenerator-runtime/runtime'
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props)
-    
+    findIfLoggedIn()
     window.FB.XFBML.parse()
   }
 
-  
+
   render() {
     const title = 'Aaron\'s Blog Login'
     return (
