@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
     const title = 'Aaron\'s Blog Login'
     const loaded = this.state.loaded
 
-    if (loaded) {
+    if (!loaded) {
       return (
         <div>
           <Navbar />
