@@ -64,5 +64,6 @@ export const findIfLoggedIn = () => {
     } else {
       console.log('error not logged in')
     }
-  }))
+  }), console.log('Not fulfilled')
+  )
 }

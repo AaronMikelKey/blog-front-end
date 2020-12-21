@@ -11,10 +11,16 @@ class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    fbLoaded.promise.then(setTimeout(() => {
-      this.setState({ loaded: true })
-      window.FB.XFBML.parse()
-    }, 750))
+    fbLoaded.promise.then(
+      console.log('FB SDK loaded, attempting to run FB.XFBML.parse()...'),
+      console.log('FB SDK not loaded.'))
+      .then(
+      this.setState({ loaded: true }),
+      console.log('Loaded state not set.'))
+      .then(
+      window.FB.XFBML.parse(),
+      console.log('Could not parse XFBML')
+    )
 }
 
   render() {
