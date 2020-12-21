@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from './navbar'
-import { findIfLoggedIn } from '../hooks/init-fb-sdk'
+import { findIfLoggedIn, fbLoaded } from '../hooks/init-fb-sdk'
 import 'regenerator-runtime/runtime'
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props)
-    findIfLoggedIn()
-    window.FB.XFBML.parse()
+    fbLoaded.promise.then(findIfLoggedIn())
+    // Might have to add this back. Sometimes reloads FB login button if it didn't load on time   .then(window.FB.XFBML.parse())
   }
 
 

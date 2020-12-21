@@ -52,13 +52,11 @@ export const findIfLoggedIn = () => {
             userID: '...'          } }   */
     console.log(response)
     if (response.status === 'connected') {
-      resolve(
         console.log('Connected: ' + response),
         //if user is logged into FB, and authorized locally
         apiAccount.FbApiAuth(response.authResponse.userID, response.authResponse.accessToken)
-      )
     } else {
-      reject(console.log('error not logged in'))
+      console.log('error not logged in')
     }
   })
 }
