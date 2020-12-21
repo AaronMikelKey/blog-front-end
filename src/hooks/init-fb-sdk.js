@@ -3,7 +3,7 @@ import { apiAccount } from './apiAccount'
 const FB_APP_ID = process.env.FB_APP_ID
 
 export const InitFacebookSdk = () => {
-  return new Promise(() => {
+  return new Promise((resolve, reject) => {
     //initialize FB SDK before starting app
     console.log('Initializing FB SDK')
     resolve(
