@@ -7,10 +7,11 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {loaded: false}
+    findIfLoggedIn()
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    fbLoaded.setTimeout(() => {
       this.setState({ loaded: true });
       window.FB.XFBML.parse()
     }, 750);
