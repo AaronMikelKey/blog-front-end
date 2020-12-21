@@ -6,7 +6,7 @@ export const InitFacebookSdk = () => {
   return new Promise(() => {
     //initialize FB SDK before starting app
     window.fbAsyncInit = () => {
-      window.FB.init({
+      FB.init({
         appId: FB_APP_ID,
         cookie: true,
         xfbml: true,
@@ -25,7 +25,7 @@ export const InitFacebookSdk = () => {
     }(document, 'script', 'facebook-jssdk'));
   }).then(
       //auto login if logged into FB already, same as GET /auth/facebook on server
-      window.FB.getLoginStatus((response) => {
+      FB.getLoginStatus((response) => {
 
         /*  response = 
             {status: ['connected', 'not_authorized', 'unknown'],
