@@ -40,9 +40,9 @@ export const findIfLoggedIn = () => {
     if (response.status === 'connected') {
         console.log(response)
         //if user is logged into FB, and authorized locally
-        apiAccount.FbApiAuth(authResponse.userID, authResponse.accessToken)
+        return apiAccount.FbApiAuth(authResponse.userID, authResponse.accessToken)
     } else {
-        console.log('error not logged in')
+        return console.log('error not logged in')
     }
 })
 }

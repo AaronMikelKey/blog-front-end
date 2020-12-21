@@ -7,7 +7,13 @@ import {render} from 'react-dom'
 
 const title = 'Aaron\'s Blog'
 
-InitFacebookSdk().then(findIfLoggedIn).then(startApp)
+InitFacebookSdk().then(
+  console.log('FB SDK Initialized, checking login status'),
+  findIfLoggedIn
+  ).then(
+    console.log('Starting App'),
+    startApp
+    )
  
 function startApp() {
   render(
