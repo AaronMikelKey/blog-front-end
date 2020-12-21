@@ -13,7 +13,7 @@ export const InitFacebookSdk = () => {
         version: 'v9.0',
         status: true
       })
-  
+
     }
     //load FB sdk script
     (function (d, s, id) {
@@ -28,25 +28,25 @@ export const InitFacebookSdk = () => {
 
 export const findIfLoggedIn = () => {
   return new Promise((resolve, reject) => {
-  FB.getLoginStatus((response) => {
+    window.FB.getLoginStatus((response) => {
 
-    /*  response = 
-        {status: ['connected', 'not_authorized', 'unknown'],
-          authResponse : {
-            accessToken: '...',
-            expiresIn: '...',
-            signedRequest: '...',
-            userID: '...'          } }   */
-    console.log(response)
-    if (response.status === 'connected') {
-      resolve(
-        console.log('Connected: ' + response),
-        //if user is logged into FB, and authorized locally
-        apiAccount.FbApiAuth(authResponse.userID, authResponse.accessToken)
-      )
-    } else {
+      /*  response = 
+          {status: ['connected', 'not_authorized', 'unknown'],
+            authResponse : {
+              accessToken: '...',
+              expiresIn: '...',
+              signedRequest: '...',
+              userID: '...'          } }   */
+      console.log(response)
+      if (response.status === 'connected') {
+        resolve(
+          console.log('Connected: ' + response),
+          //if user is logged into FB, and authorized locally
+          apiAccount.FbApiAuth(authResponse.userID, authResponse.accessToken)
+        )
+      } else {
         reject(console.log('error not logged in'))
-    }
-})
-})
+      }
+    })
+  })
 }
