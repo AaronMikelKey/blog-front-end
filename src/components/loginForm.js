@@ -20,17 +20,12 @@ class LoginForm extends React.Component {
           InitFacebookSdk()
         })
       .then(() => {
-        this.setState({ loaded: true })
-        console.log('State: ' + JSON.stringify(this.state))
-      },
-        console.log('State not set.')
-      )
-      .then(() => {
         console.log('Running XFBML.parse()...')
         window.FB.XFBML.parse()
       },
         console.log('Could not parse XFBML')
       )
+      this.setState({loaded: true})
   }
 
   render() {
