@@ -6,8 +6,7 @@ import 'regenerator-runtime/runtime'
 class LoginForm extends React.Component {
   constructor(props) {
     super(props)
-    fbLoaded.promise.then(findIfLoggedIn())
-    // Might have to add this back. Sometimes reloads FB login button if it didn't load on time   .then(window.FB.XFBML.parse())
+    fbLoaded.promise.then(findIfLoggedIn()).then(window.FB.XFBML.parse())
   }
 
 
