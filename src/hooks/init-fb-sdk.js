@@ -12,7 +12,13 @@ class Deferred {
     })
   }
 }
+//fbLoaded.resolve() is added after FB.init
 export const fbLoaded = (new Deferred());
+/* 
+    Use like this:
+    
+    fbLoaded.promise.then( functionToRunAfterSDKLoads() )
+*/
 
 //Initializes facebook's javascript SDK
 export const InitFacebookSdk = () => {

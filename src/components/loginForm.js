@@ -11,10 +11,10 @@ class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    fbLoaded.setTimeout(() => {
-      this.setState({ loaded: true });
+    fbLoaded.promise.then(setTimeout(() => {
+      this.setState({ loaded: true })
       window.FB.XFBML.parse()
-    }, 750);
+    }, 750))
 }
 
   render() {
