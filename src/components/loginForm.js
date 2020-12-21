@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
         })
       .then(() => {
         this.setState({ loaded: true })
-        console.log('State: ' + this.state)
+        console.log('State: ' + JSON.stringify(this.state))
       },
         console.log('State not set.')
       )
@@ -35,30 +35,41 @@ class LoginForm extends React.Component {
 
   render() {
     const title = 'Aaron\'s Blog Login'
-    return (
-      <div>
-        <Navbar />
-        <div className='columns'>
-          <div className='column is-2'></div>
-          <div className='field column is-two-thirds'>
-            <div className='has-text-centered my-6'>
-              Log In <br /> Not a member yet? <a href=''>Sign up!</a>
-            </div>
-            <div>
-              <div
-                data-size="large"
-                data-button-type="continue_with"
-                data-layout="default"
-                data-auto-logout-link="false"
-                data-use-continue-as="false"
-                data-width=""
-              />
-            </div>
-          </div>
-          <div className='column is-2'></div>
+    const loaded = this.state.loaded
+
+    if (loaded) {
+      return (
+        <div>
+          <Navbar />
+          <div>Loading...</div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div>
+          <Navbar />
+          <div className='columns'>
+            <div className='column is-2'></div>
+            <div className='field column is-two-thirds'>
+              <div className='has-text-centered my-6'>
+                Log In <br /> Not a member yet? <a href=''>Sign up!</a>
+              </div>
+              <div>
+                <div
+                  data-size="large"
+                  data-button-type="continue_with"
+                  data-layout="default"
+                  data-auto-logout-link="false"
+                  data-use-continue-as="false"
+                  data-width=""
+                />
+              </div>
+            </div>
+            <div className='column is-2'></div>
+          </div>
+        </div>
+      )
+    }
   }
 }
 
