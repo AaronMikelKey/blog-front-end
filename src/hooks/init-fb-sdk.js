@@ -3,7 +3,6 @@ import { apiAccount } from './apiAccount'
 const FB_APP_ID = process.env.FB_APP_ID
 
 export const InitFacebookSdk = () => {
-  return new Promise(() => {
     //initialize FB SDK before starting app
     console.log('Initializing FB SDK')
     window.fbAsyncInit = () => {
@@ -24,7 +23,6 @@ export const InitFacebookSdk = () => {
       js.src = "https://connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-  })
 }
 
 export const findIfLoggedIn = () => {
