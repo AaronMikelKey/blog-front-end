@@ -7,12 +7,10 @@ import {render} from 'react-dom'
 
 const title = 'Aaron\'s Blog'
 
-InitFacebookSdk().then(
-    console.log('Starting App'),
-    startApp
-    )
+InitFacebookSdk().then(startApp)
  
 function startApp() {
+  console.log('starting app...')
   render(
     <App title={title} />,
   document.getElementById('app')
