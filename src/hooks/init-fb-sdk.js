@@ -41,7 +41,7 @@ export const InitFacebookSdk = () => {
 
 //Checks login state of user.  If logged in, authorizes them with local auth
 export const findIfLoggedIn = () => {
-  window.FB.getLoginStatus((response) => {
+  FB.getLoginStatus((response) => {
 
     /*  response = 
         {status: ['connected', 'not_authorized', 'unknown'],
