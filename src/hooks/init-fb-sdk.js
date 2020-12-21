@@ -27,7 +27,7 @@ export const InitFacebookSdk = () => {
 }
 
 export const findIfLoggedIn = () => {
-  return new Promise(() => {
+  return new Promise((resolve, reject) => {
   FB.getLoginStatus((response) => {
 
     /*  response = 
@@ -37,13 +37,15 @@ export const findIfLoggedIn = () => {
             expiresIn: '...',
             signedRequest: '...',
             userID: '...'          } }   */
-
+    console.log(response)
     if (response.status === 'connected') {
-        console.log('Connected: ' + response)
+      resolve(
+        console.log('Connected: ' + response),
         //if user is logged into FB, and authorized locally
-        return apiAccount.FbApiAuth(authResponse.userID, authResponse.accessToken)
+        apiAccount.FbApiAuth(authResponse.userID, authResponse.accessToken)
+      )
     } else {
-        return console.log('error not logged in')
+        reject(console.log('error not logged in'))
     }
 })
 })

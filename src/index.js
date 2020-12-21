@@ -9,7 +9,7 @@ const title = 'Aaron\'s Blog'
 
 InitFacebookSdk().then(
   console.log('FB SDK Initialized, checking login status'),
-  findIfLoggedIn
+  findIfLoggedIn()
   ).then(
     console.log('Starting App'),
     startApp
