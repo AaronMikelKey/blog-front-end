@@ -1,27 +1,37 @@
 import React from 'react'
 import Navbar from './navbar'
-import { findIfLoggedIn, fbLoaded } from '../hooks/init-fb-sdk'
+import { InitFacebookSdk, findIfLoggedIn, fbLoaded } from '../hooks/init-fb-sdk'
 import 'regenerator-runtime/runtime'
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {loaded: false}
+    this.state = { loaded: false }
     findIfLoggedIn()
   }
 
   componentDidMount() {
-    fbLoaded.promise.then(
-      console.log('FB SDK loaded, attempting to run FB.XFBML.parse()...'),
-      console.log('FB SDK not loaded.'))
-      .then(
-      this.setState({ loaded: true }),
-      console.log('Loaded state not set.'))
-      .then(
-      window.FB.XFBML.parse(),
-      console.log('Could not parse XFBML')
-    )
-}
+    fbLoaded.promise
+      .then(() => {
+        console.log('FB SDK loaded, attempting to run FB.XFBML.parse()...')
+      },
+        () => {
+          console.log('FB SDK not loaded.  Attempting to load SDK')
+          InitFacebookSdk()
+        })
+      .then(() => {
+        this.setState({ loaded: true })
+        console.log('State: ' + this.state)
+      },
+        console.log('State not set.')
+      )
+      .then(() => {
+        console.log('Running XFBML.parse()...')
+        window.FB.XFBML.parse()
+      },
+        console.log('Could not parse XFBML')
+      )
+  }
 
   render() {
     const title = 'Aaron\'s Blog Login'
@@ -35,14 +45,14 @@ class LoginForm extends React.Component {
               Log In <br /> Not a member yet? <a href=''>Sign up!</a>
             </div>
             <div>
-                <div 
-                  data-size="large" 
-                  data-button-type="continue_with" 
-                  data-layout="default" 
-                  data-auto-logout-link="false" 
-                  data-use-continue-as="false" 
-                  data-width=""
-                />
+              <div
+                data-size="large"
+                data-button-type="continue_with"
+                data-layout="default"
+                data-auto-logout-link="false"
+                data-use-continue-as="false"
+                data-width=""
+              />
             </div>
           </div>
           <div className='column is-2'></div>
