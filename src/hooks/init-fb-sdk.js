@@ -5,6 +5,7 @@ const FB_APP_ID = process.env.FB_APP_ID
 export const InitFacebookSdk = () => {
   return new Promise(() => {
     //initialize FB SDK before starting app
+    console.log('Initializing FB SDK')
     window.fbAsyncInit = () => {
       FB.init({
         appId: FB_APP_ID,
@@ -42,7 +43,7 @@ export const findIfLoggedIn = () => {
         resolve(
           console.log('Connected: ' + response),
           //if user is logged into FB, and authorized locally
-          apiAccount.FbApiAuth(authResponse.userID, authResponse.accessToken)
+          apiAccount.FbApiAuth(response.authResponse.userID, response.authResponse.accessToken)
         )
       } else {
         reject(console.log('error not logged in'))
