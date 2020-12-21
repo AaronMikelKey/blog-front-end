@@ -6,9 +6,15 @@ import 'regenerator-runtime/runtime'
 class LoginForm extends React.Component {
   constructor(props) {
     super(props)
-    fbLoaded.promise.then(findIfLoggedIn()).then(window.FB.XFBML.parse())
+    this.state = {loaded: false}
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loaded: true });
+      window.FB.XFBML.parse()
+    }, 750);
+}
 
   render() {
     const title = 'Aaron\'s Blog Login'
