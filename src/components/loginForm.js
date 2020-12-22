@@ -8,6 +8,13 @@ class LoginForm extends React.Component {
     super(props)
     this.state = { loaded: false }
     findIfLoggedIn()
+    this.handleSetState = this.handleSetState.bind(this)
+  }
+
+  handleSetState() {
+    setTimeout(() => {
+      this.setState({loaded: true})
+    }, 1000);
   }
 
   componentDidMount() {
@@ -25,7 +32,6 @@ class LoginForm extends React.Component {
       },
         console.log('Could not parse XFBML')
       )
-      this.setState({loaded: true})
   }
 
   render() {
@@ -33,6 +39,7 @@ class LoginForm extends React.Component {
     const loaded = this.state.loaded
 
     if (!loaded) {
+      this.handleSetState()
       return (
         <div>
           <Navbar />
