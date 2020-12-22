@@ -1,7 +1,5 @@
 import { apiAccount } from './apiAccount'
 
-const FB_APP_ID = process.env.FB_APP_ID
-
 //Creates a Promise to be used for waiting on FB SDK loading before doing other things
 class Deferred {
   constructor() {
@@ -26,7 +24,7 @@ export const InitFacebookSdk = () => {
   console.log('Initializing FB SDK')
   window.fbAsyncInit = () => {
     FB.init({
-      appId: FB_APP_ID,
+      appId: process.env.FB_APP_ID,
       cookie: true,
       xfbml: true,
       version: 'v9.0',
