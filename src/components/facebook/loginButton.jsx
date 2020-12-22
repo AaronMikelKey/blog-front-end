@@ -12,7 +12,7 @@ const logInToFacebook = () => {
 }
 
 
-export const FbLoginButton = () => {
+const FbLoginButton = () => {
   return (
     <div className='button is-link is-medium is-fullwidth' onClick={logInToFacebook()}>
       <span className="icon">
@@ -22,3 +22,5 @@ export const FbLoginButton = () => {
     </div>
   )
 }
+
+export default FbLoginButton
