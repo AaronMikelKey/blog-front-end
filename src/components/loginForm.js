@@ -3,7 +3,6 @@ import Navbar from './navbar'
 import { InitFacebookSdk, findIfLoggedIn, fbLoaded } from '../hooks/init-fb-sdk'
 import { apiAccount } from '../hooks/apiAccount'
 import 'regenerator-runtime/runtime'
-import FbLoginButton from './facebook/loginButton'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -31,21 +30,9 @@ class LoginForm extends React.Component {
     this.setState({ loaded: true })
   }
 
-  //Checks login status and fetches api if user is logged in to FB and authorizes the app
-  logInToFacebook(e) {
-    e.preventDefault()
-
-    fbLoaded.promise.then(() => {
-      FB.login(function (response) {
-        if (response.status === 'connected') {
-          apiAccount.FbApiAuth(response.authResponse.id, response.authResponse.accessToken)
-        } else {
-          console.log('login error')
-        }
-      })
-    })
+  loggedInToFacebook() {
+    findIfLoggedIn()
   }
-
 
   render() {
     const title = 'Login'
@@ -63,8 +50,6 @@ class LoginForm extends React.Component {
       InitFacebookSdk()
       return (
         <div>
-          <div id="fb-root"></div>
-          <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0&appId=829109204488429&autoLogAppEvents=1" nonce="2dyEbxI3"></script>
           <Navbar />
           <div className='columns'>
             <div className='column is-2'></div>
@@ -72,10 +57,15 @@ class LoginForm extends React.Component {
               <div className='has-text-centered my-6'>
                 Log In <br /> Not a member yet? <a href=''>Sign up!</a>
               </div>
-              <div>
-                <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                <FbLoginButton onClick={this.logInToFacebook} />
-              </div>
+                <div 
+                class="fb-login-button" 
+                onlogin={this.loggedInToFacebook}
+                data-width="" 
+                data-size="large" 
+                data-button-type="continue_with" 
+                data-layout="default" 
+                data-auto-logout-link="false" 
+                data-use-continue-as="false"></div>
             </div>
             <div className='column is-2'></div>
           </div>
