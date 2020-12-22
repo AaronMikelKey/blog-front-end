@@ -27,7 +27,7 @@ const Logout = () => {
               This will only log you out from this website.
               <br />
               <button className='button is-medium' onClick={ handleLogout() }>Log out</button>
-              <button className='button is-medium' onClick={  }>Cancel</button>
+              <button className='button is-medium' onClick={ alert('cancelled') }>Cancel</button>
           </div>
           </article>
           <div className='column is-2'></div>
