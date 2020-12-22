@@ -15,7 +15,7 @@ const logInToFacebook = () => {
   })
 }
     return (
-    <div className='button is-link is-medium is-fullwidth' onClick={logInToFacebook()}>
+    <div className='button is-link is-medium is-fullwidth' onClick={logInToFacebook}>
       <span className="icon">
         <i className="far fa-facebook"></i>
       </span>
