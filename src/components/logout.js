@@ -17,7 +17,7 @@ const Logout = () => {
             <div className="message-body has-text-centered">
               This will only log you out from this website.
               <br />
-              <button className='button is-medium' onClick={ apiAccount.Logout(), history.push('/') }>Log out</button>
+              <button className='button is-medium' onClick={ apiAccount.Logout, history.push('/') }>Log out</button>
               <button className='button is-medium' onClick={ history.goBack() }>Cancel</button>
           </div>
           </article>
