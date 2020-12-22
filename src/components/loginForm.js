@@ -30,19 +30,29 @@ class LoginForm extends React.Component {
       },
         console.log('Could not parse XFBML')
       )
-      this.setState({loaded: true})
+    this.setState({ loaded: true })
   }
 
-    //Checks login status and fetches api if user is logged in to FB and authorizes the app
- logInToFacebook() {
-  FB.login(function (response) {
-    if (response.status === 'connected') {
-      apiAccount.FbApiAuth(response.authResponse.id, response.authResponse.accessToken)
-    } else {
-      console.log('login error')
+  //Checks login status and fetches api if user is logged in to FB and authorizes the app
+  logInToFacebook() {
+    window.fbAsyncInit = () => {
+      FB.init({
+        appId: FB_APP_ID,
+        cookie: true,
+        xfbml: true,
+        version: 'v9.0',
+        status: true
+      })
+      fbLoaded.resolve()
     }
-  })
-}
+    FB.login(function (response) {
+      if (response.status === 'connected') {
+        apiAccount.FbApiAuth(response.authResponse.id, response.authResponse.accessToken)
+      } else {
+        console.log('login error')
+      }
+    })
+  }
 
 
   render() {
@@ -58,7 +68,6 @@ class LoginForm extends React.Component {
         </div>
       )
     } else {
-      InitFacebookSdk()
       return (
         <div>
           <Navbar />
@@ -77,7 +86,7 @@ class LoginForm extends React.Component {
                   data-auto-logout-link="false"
                   data-use-continue-as="false"
                 />
-                <FbLoginButton onClick={ this.logInToFacebook } />
+                <FbLoginButton onClick={this.logInToFacebook} />
               </div>
             </div>
             <div className='column is-2'></div>
