@@ -7,9 +7,8 @@ const Logout = () => {
   const history = useHistory()
   const [redirect, setRedirect] = useState(false)
   const handleLogout = () => {
-    apiAccount.Logout.then(() => {
-      setRedirect(true)
-    })
+    apiAccount.Logout
+    setRedirect(true)
   }
   if (redirect !== true) {
     return (
