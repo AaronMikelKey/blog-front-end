@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './navbar'
 import { InitFacebookSdk, findIfLoggedIn, fbLoaded } from '../hooks/init-fb-sdk'
+import { apiAccount } from '../hooks/apiAccount'
 import 'regenerator-runtime/runtime'
 import FbLoginButton from './facebook/loginButton'
 
@@ -10,6 +11,7 @@ class LoginForm extends React.Component {
     this.state = { loaded: false }
     findIfLoggedIn()
     this.handleSetState = this.handleSetState.bind(this)
+    this.logInToFacebook = this.logInToFacebook.bind(this)
   }
 
   //Ensures FB SDK is loaded so we can use FB login button, adds 1 second to load time also.
@@ -30,6 +32,17 @@ class LoginForm extends React.Component {
       )
       this.setState({loaded: true})
   }
+
+    //Checks login status and fetches api if user is logged in to FB and authorizes the app
+ logInToFacebook() {
+  FB.login(function (response) {
+    if (response.status === 'connected') {
+      apiAccount.FbApiAuth(response.authResponse.id, response.authResponse.accessToken)
+    } else {
+      console.log('login error')
+    }
+  })
+}
 
 
   render() {
@@ -63,7 +76,7 @@ class LoginForm extends React.Component {
                   data-auto-logout-link="false"
                   data-use-continue-as="false"
                 />
-                <FbLoginButton />
+                <FbLoginButton onClick={ this.logInToFacebook } />
               </div>
             </div>
             <div className='column is-2'></div>
