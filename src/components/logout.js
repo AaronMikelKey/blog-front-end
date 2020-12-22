@@ -6,7 +6,7 @@ import { apiAccount } from '../hooks/apiAccount'
 const Logout = () => {
   const history = useHistory()
   const [redirect, setRedirect] = useState(false)
-  {redirect ? (<Redirect push to="/"/>) : null}
+  if (redirect === false) {
     return (
       <div>
         <Navbar />
@@ -27,6 +27,9 @@ const Logout = () => {
         </div>
       </div>
     )
+  } else {
+    return <Redirect push to="/"/>
+  }
   }
 
 export default Logout
