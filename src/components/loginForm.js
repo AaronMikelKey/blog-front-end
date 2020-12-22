@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
       },
         () => {
           console.log('FB SDK not loaded.  Attempting to load SDK')
-          InitFacebookSdk()
+          //InitFacebookSdk()
         })
       .then(() => {
         window.FB.XFBML.parse()
@@ -34,6 +34,7 @@ class LoginForm extends React.Component {
   //Checks login status and fetches api if user is logged in to FB and authorizes the app
   logInToFacebook(e) {
     e.preventDefault()
+
     fbLoaded.promise.then(() => {
       FB.login(function (response) {
         if (response.status === 'connected') {
@@ -62,6 +63,8 @@ class LoginForm extends React.Component {
       InitFacebookSdk()
       return (
         <div>
+          <div id="fb-root"></div>
+          <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0&appId=829109204488429&autoLogAppEvents=1" nonce="2dyEbxI3"></script>
           <Navbar />
           <div className='columns'>
             <div className='column is-2'></div>
@@ -70,14 +73,7 @@ class LoginForm extends React.Component {
                 Log In <br /> Not a member yet? <a href=''>Sign up!</a>
               </div>
               <div>
-                <div
-                  className="fb-login-button"
-                  data-size="large"
-                  data-button-type="continue_with"
-                  data-layout="default"
-                  data-auto-logout-link="false"
-                  data-use-continue-as="false"
-                />
+                <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
                 <FbLoginButton onClick={this.logInToFacebook} />
               </div>
             </div>
