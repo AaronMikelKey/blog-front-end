@@ -28,9 +28,7 @@ class LoginForm extends React.Component {
       },
         console.log('Could not parse XFBML')
       )
-    setTimeout(() => {
       this.setState({loaded: true})
-    }, 1000);
   }
 
 
