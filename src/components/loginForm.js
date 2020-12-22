@@ -9,7 +9,6 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = { loaded: false }
-    findIfLoggedIn()
     this.handleSetState = this.handleSetState.bind(this)
     this.logInToFacebook = this.logInToFacebook.bind(this)
   }
@@ -25,7 +24,6 @@ class LoginForm extends React.Component {
           InitFacebookSdk()
         })
       .then(() => {
-        console.log('Running XFBML.parse()...')
         window.FB.XFBML.parse()
       },
         console.log('Could not parse XFBML')
@@ -36,23 +34,6 @@ class LoginForm extends React.Component {
   //Checks login status and fetches api if user is logged in to FB and authorizes the app
   logInToFacebook(e) {
     e.preventDefault()
-    window.fbAsyncInit = () => {
-      FB.init({
-        appId: process.env.FB_APP_ID,
-        cookie: true,
-        xfbml: true,
-        version: 'v9.0',
-        status: true
-      })
-      fbLoaded.resolve()
-      FB.login(function (response) {
-        if (response.status === 'connected') {
-          apiAccount.FbApiAuth(response.authResponse.id, response.authResponse.accessToken)
-        } else {
-          console.log('login error')
-        }
-      })
-    }
     fbLoaded.promise.then(() => {
       FB.login(function (response) {
         if (response.status === 'connected') {
