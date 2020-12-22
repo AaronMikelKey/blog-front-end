@@ -1,6 +1,5 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-const history = useHistory()
 import Navbar from './navbar'
 import { apiAccount } from '../hooks/apiAccount'
 
@@ -9,6 +8,7 @@ class Logout extends React.Component {
     super(props)
     this.handleLogout = this.handleLogout.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
+    history = useHistory()
   }
   
 
