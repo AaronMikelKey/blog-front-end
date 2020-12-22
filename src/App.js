@@ -3,6 +3,7 @@ import Home from './Home'
 import About from './About'
 import Contact from './Contact'
 import BlogPost from './components/blogPost'
+import Logout from './components/logout'
 import {
   BrowserRouter as Router,
   Switch,
@@ -41,6 +42,10 @@ const App = () => {
 
         <Route path='/login/facebook'>
           
+        </Route>
+
+        <Route path='/logout'>
+          <Logout />
         </Route>
 
         <Route path="/">

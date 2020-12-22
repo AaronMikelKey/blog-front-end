@@ -45,7 +45,8 @@ export const InitFacebookSdk = () => {
 
 //Checks login state of user.  If logged in, authorizes them with local auth
 export const findIfLoggedIn = () => {
-  fbLoaded.promise.then(FB.getLoginStatus((response) => {
+  fbLoaded.promise.then(() => {
+    FB.getLoginStatus((response) => {
 
     /*  response = 
         {status: ['connected', 'not_authorized', 'unknown'],
@@ -56,12 +57,12 @@ export const findIfLoggedIn = () => {
             userID: '...'          } }   */
     console.log(response)
     if (response.status === 'connected') {
-        console.log('Connected: ' + response),
+        console.log('Connected: ' + response.authResponse),
         //if user is logged into FB, and authorized locally
         apiAccount.FbApiAuth(response.authResponse.userID, response.authResponse.accessToken)
     } else {
       console.log('error not logged in')
     }
-  }), console.log('Not fulfilled')
+  })}, console.log('Not fulfilled')
   )
 }

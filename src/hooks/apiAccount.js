@@ -1,5 +1,6 @@
 export const apiAccount = {
 FbApiAuth,
+Logout
 
 }
 
@@ -26,5 +27,18 @@ const FbApiAuth = async (userID, token) => {
     return Promise.resolve(res)
   } else {
     return Promise.reject('Error.')
+  }
+}
+
+const Logout = async () => {
+  const response = await fetch(baseUrl + '/logout', {
+    method: 'GET',
+    credentials: 'include',
+  })
+  if (response.ok) {
+    const res = await res.json()
+    return Promise.resolve(res)
+  } else {
+    return Promise.reject('Error')
   }
 }
