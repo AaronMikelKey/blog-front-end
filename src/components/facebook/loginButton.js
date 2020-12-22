@@ -12,15 +12,15 @@ const logInToFacebook = () => {
 }
 
 
-class FbLoginButton extends React.Component {
-  render() {
+const FbLoginButton = () => {
+    return (
     <div className='button is-link is-medium is-fullwidth' onClick={logInToFacebook()}>
       <span className="icon">
         <i className="far fa-facebook"></i>
       </span>
       <span>Log in With Facebook</span>
     </div>
-  }
+    )
 }
 
 export default FbLoginButton
