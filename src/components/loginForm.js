@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
     this.setState({ loaded: true })
   }
 
-  loggedInToFacebook() {
+  logInToFacebook() {
     findIfLoggedIn()
   }
 
@@ -59,7 +59,7 @@ class LoginForm extends React.Component {
               </div>
                 <div 
                 class="fb-login-button" 
-                onlogin={this.loggedInToFacebook}
+                onlogin={this.logInToFacebook}
                 data-width="" 
                 data-size="large" 
                 data-button-type="continue_with" 
