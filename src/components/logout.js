@@ -5,14 +5,14 @@ import { apiAccount } from '../hooks/apiAccount'
 
 const Logout = () => {
   const [redirect, setRedirect] = useState(false)
-  const [cancel, setCancel] = useState(0)
+
   const handleLogout = () => {
-    apiAccount.Logout
-    setRedirect(true)
+    apiAccount.Logout()
+    setTimeout(() => {
+      setRedirect(true)
+    }, 5000);
   }
-  if (cancel !== 0) {
-    return <Redirect push to="/" />
-  }
+  
   if (redirect !== true) {
     return (
       <div>
@@ -27,7 +27,7 @@ const Logout = () => {
               This will only log you out from this website.
               <br />
               <button className='button is-medium' onClick={ handleLogout() }>Log out</button>
-              <button className='button is-medium' onClick={ setCancel(1) }>Cancel</button>
+              <button className='button is-medium' onClick={  }>Cancel</button>
           </div>
           </article>
           <div className='column is-2'></div>
