@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from './navbar'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import { apiAccount } from '../hooks/apiAccount'
 
 const Logout = () => {
