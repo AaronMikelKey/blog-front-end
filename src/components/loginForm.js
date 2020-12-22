@@ -37,7 +37,7 @@ class LoginForm extends React.Component {
   logInToFacebook() {
     window.fbAsyncInit = () => {
       FB.init({
-        appId: FB_APP_ID,
+        appId: process.env.FB_APP_ID,
         cookie: true,
         xfbml: true,
         version: 'v9.0',
