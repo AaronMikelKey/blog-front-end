@@ -34,7 +34,8 @@ class LoginForm extends React.Component {
   }
 
   //Checks login status and fetches api if user is logged in to FB and authorizes the app
-  logInToFacebook() {
+  logInToFacebook(e) {
+    e.preventDefault()
     window.fbAsyncInit = () => {
       FB.init({
         appId: process.env.FB_APP_ID,
