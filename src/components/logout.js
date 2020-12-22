@@ -7,7 +7,7 @@ const Logout = () => {
   const [redirect, setRedirect] = useState(false)
 
   const handleLogout = () => {
-    apiAccount.Logout()
+    apiAccount.Logout
     setTimeout(() => {
       setRedirect(true)
     }, 5000);
