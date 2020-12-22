@@ -44,6 +44,7 @@ const Logout = async () => {
     if (!res.success) {
       alert('Error.  Please try again')
     }
-    return setRedirect(true)
+    console.log(res)
+    return res
   })
 }
