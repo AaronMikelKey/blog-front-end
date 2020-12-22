@@ -59,6 +59,7 @@ class LoginForm extends React.Component {
         </div>
       )
     } else {
+      InitFacebookSdk
       return (
         <div>
           <Navbar />
