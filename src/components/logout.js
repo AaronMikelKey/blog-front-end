@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import Navbar from './navbar'
-import { useHistory, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { apiAccount } from '../hooks/apiAccount'
 
 const Logout = () => {
-  const history = useHistory()
   const [redirect, setRedirect] = useState(false)
+  const [cancel, setCancel] = useState(0)
   const handleLogout = () => {
     apiAccount.Logout
     setRedirect(true)
+  }
+  if (cancel !== 0) {
+    return <Redirect push to="/" />
   }
   if (redirect !== true) {
     return (
@@ -24,7 +27,7 @@ const Logout = () => {
               This will only log you out from this website.
               <br />
               <button className='button is-medium' onClick={ handleLogout() }>Log out</button>
-              <button className='button is-medium' onClick={ history.goBack() }>Cancel</button>
+              <button className='button is-medium' onClick={ setCancel(1) }>Cancel</button>
           </div>
           </article>
           <div className='column is-2'></div>
