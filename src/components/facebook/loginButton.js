@@ -1,6 +1,10 @@
 import React from 'react'
 
-//Checks login status and fetches api if user is logged in to FB and authorizes the app
+
+
+
+const FbLoginButton = () => {
+  //Checks login status and fetches api if user is logged in to FB and authorizes the app
 const logInToFacebook = () => {
   FB.login(function (response) {
     if (response.status === 'connected') {
@@ -10,9 +14,6 @@ const logInToFacebook = () => {
     }
   })
 }
-
-
-const FbLoginButton = () => {
     return (
     <div className='button is-link is-medium is-fullwidth' onClick={logInToFacebook()}>
       <span className="icon">
