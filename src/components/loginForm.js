@@ -58,6 +58,7 @@ class LoginForm extends React.Component {
               </div>
               <div>
                 <div
+                  className="fb-login-button"
                   data-size="large"
                   data-button-type="continue_with"
                   data-layout="default"
