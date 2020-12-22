@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './navbar'
 import { InitFacebookSdk, findIfLoggedIn, fbLoaded } from '../hooks/init-fb-sdk'
 import 'regenerator-runtime/runtime'
+import { FbLoginButton } from './facebook/loginButton'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -11,13 +12,8 @@ class LoginForm extends React.Component {
     this.handleSetState = this.handleSetState.bind(this)
   }
 
+  //Ensures FB SDK is loaded so we can use FB login button, adds 1 second to load time also.
   handleSetState() {
-    setTimeout(() => {
-      this.setState({loaded: true})
-    }, 1000);
-  }
-
-  componentDidMount() {
     fbLoaded.promise
       .then(() => {
         console.log('FB SDK loaded, attempting to run FB.XFBML.parse()...')
@@ -32,7 +28,11 @@ class LoginForm extends React.Component {
       },
         console.log('Could not parse XFBML')
       )
+    setTimeout(() => {
+      this.setState({loaded: true})
+    }, 1000);
   }
+
 
   render() {
     const title = 'Aaron\'s Blog Login'
@@ -64,8 +64,8 @@ class LoginForm extends React.Component {
                   data-layout="default"
                   data-auto-logout-link="false"
                   data-use-continue-as="false"
-                  data-width=""
                 />
+                <FbLoginButton />
               </div>
             </div>
             <div className='column is-2'></div>
