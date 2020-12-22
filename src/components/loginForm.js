@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './navbar'
 import { InitFacebookSdk, findIfLoggedIn, fbLoaded } from '../hooks/init-fb-sdk'
 import 'regenerator-runtime/runtime'
-import { FbLoginButton } from './facebook/loginButton'
+import FbLoginButton from './facebook/loginButton'
 
 class LoginForm extends React.Component {
   constructor(props) {
