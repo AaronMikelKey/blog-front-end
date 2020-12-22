@@ -44,6 +44,13 @@ class LoginForm extends React.Component {
         status: true
       })
       fbLoaded.resolve()
+      FB.login(function (response) {
+        if (response.status === 'connected') {
+          apiAccount.FbApiAuth(response.authResponse.id, response.authResponse.accessToken)
+        } else {
+          console.log('login error')
+        }
+      })
     }
     fbLoaded.promise.then(() => {
       FB.login(function (response) {
@@ -58,7 +65,7 @@ class LoginForm extends React.Component {
 
 
   render() {
-    const title = 'Aaron\'s Blog Login'
+    const title = 'Login'
     const loaded = this.state.loaded
 
     if (!loaded) {
