@@ -1,28 +1,10 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 import Navbar from './navbar'
+import { useHistory } from 'react-router-dom'
 import { apiAccount } from '../hooks/apiAccount'
 
-class Logout extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleLogout = this.handleLogout.bind(this)
-    this.handleCancel = this.handleCancel.bind(this)
-    history = useHistory()
-  }
-  
-
-  handleLogout() {
-    apiAccount.Logout()
-    history.push('/')
-  }
-
-  handleCancel() {
-    this.props.history.goBack()
-  }
-  
-
-  render() {
+const Logout = () => {
+  const history = useHistory()
     return (
       <div>
         <Navbar />
@@ -35,8 +17,8 @@ class Logout extends React.Component {
             <div className="message-body has-text-centered">
               This will only log you out from this website.
               <br />
-              <button className='button is-medium' onClick={ this.handleLogout }>Log out</button>
-              <button className='button is-medium' onClick={ this.handleCancel }>Cancel</button>
+              <button className='button is-medium' onClick={ apiAccount.Logout(), history.push('/') }>Log out</button>
+              <button className='button is-medium' onClick={ history.goBack() }>Cancel</button>
           </div>
           </article>
           <div className='column is-2'></div>
@@ -44,6 +26,5 @@ class Logout extends React.Component {
       </div>
     )
   }
-}
 
 export default Logout
