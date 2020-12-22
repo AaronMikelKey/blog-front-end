@@ -7,7 +7,6 @@ import { apiAccount } from '../hooks/apiAccount'
 class Logout extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { loggedOut: false }
     this.handleLogout = this.handleLogout.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
   }
@@ -15,7 +14,6 @@ class Logout extends React.Component {
 
   handleLogout() {
     apiAccount.Logout()
-    this.setState({ loggedOut: true })
     history.push('/')
   }
 
