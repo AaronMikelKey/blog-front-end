@@ -31,20 +31,18 @@ const FbApiAuth = async (userID, token) => {
 }
 
 const Logout = async () => {
-  fetch(baseUrl + '/logout', {
+  const response = fetch(baseUrl + '/logout', {
     method: 'GET',
     credentials: 'include',
-  }).then((response) => {
-  if (!response.ok) {
-    throw new Error('Error: ' + response.status)
-  }
-  console.log(response)
-  return response.json()
-  }).then((res) => {
-    if (!res.success) {
-      alert('Error.  Please try again')
-    }
-    console.log(res)
-    return res
+    header: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ logout: true })
   })
+  if (response.ok) {
+  const res = await response.json()
+  return Promise.resolve(res)
+  } else {
+    return Promise.reject('Error: ' + response.status)
+  }
 }
