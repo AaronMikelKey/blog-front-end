@@ -45,13 +45,13 @@ class LoginForm extends React.Component {
       })
       fbLoaded.resolve()
     }
-    FB.login(function (response) {
+    fbLoaded.promise.then(FB.login(function (response) {
       if (response.status === 'connected') {
         apiAccount.FbApiAuth(response.authResponse.id, response.authResponse.accessToken)
       } else {
         console.log('login error')
       }
-    })
+    }))
   }
 
 
