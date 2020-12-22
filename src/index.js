@@ -7,8 +7,7 @@ import {render} from 'react-dom'
 
 const title = 'Aaron\'s Blog'
 
-InitFacebookSdk()
-fbLoaded.promise.then(startApp())
+startApp()
  
 function startApp() {
   render(
