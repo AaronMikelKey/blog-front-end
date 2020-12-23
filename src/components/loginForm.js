@@ -64,7 +64,8 @@ class LoginForm extends React.Component {
                 data-size="large" 
                 data-button-type="continue_with" 
                 data-layout="default" 
-                data-auto-logout-link="false" 
+                //Set this to true for testing but will change back
+                data-auto-logout-link="true" 
                 data-use-continue-as="false"></div>
             </div>
             <div className='column is-2'></div>
