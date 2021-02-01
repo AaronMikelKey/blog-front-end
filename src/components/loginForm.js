@@ -57,16 +57,9 @@ class LoginForm extends React.Component {
               <div className='has-text-centered my-6'>
                 Log In <br /> Not a member yet? <a href=''>Sign up!</a>
               </div>
-                <div 
-                class="fb-login-button" 
-                onlogin={this.logInToFacebook}
-                data-width="" 
-                data-size="large" 
-                data-button-type="continue_with" 
-                data-layout="default" 
-                //Set this to true for testing but will change back
-                data-auto-logout-link="true" 
-                data-use-continue-as="false"></div>
+                <div className='has-text-centered my-6'>
+                  <a href='https://aaron-key-blog-api.herokuapp.com/auth/facebook'>Log In With Facebook</a>
+                </div>
             </div>
             <div className='column is-2'></div>
           </div>
